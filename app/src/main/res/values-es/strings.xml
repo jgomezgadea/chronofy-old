@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chronofy</string>
+    <string name="action_settings">Herramientas</string>
+    <string name="elemento_anyadido">Elemento añadido</string>
+    <string name="navigation_drawer_close">Cerrar el cajón de navegación</string>
+    <string name="navigation_drawer_open">Abrir el cajón de navegación</string>
+</resources>
