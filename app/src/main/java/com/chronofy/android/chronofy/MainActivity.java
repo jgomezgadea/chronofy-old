@@ -18,6 +18,7 @@ import com.chronofy.android.chronofy.Fragment.mainFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
         FragmentManager fm = null;
+        // TODO Hacer base de datos con Realm
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
