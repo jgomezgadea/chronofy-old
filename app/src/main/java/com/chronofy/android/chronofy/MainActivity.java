@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
+        // TODO Acciones de los diferentes accesos del menú desplegable de la izquierda
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
