@@ -35,6 +35,7 @@ public class inflateBrick extends ArrayAdapter {
         // Auto-generated constructor stub
     }
 
+    // TODO Hacer que si deslizo un item hacia la izquierda, se elimine (con un toast para confirmar su eliminación)
     public View getView(int position, View convertView, ViewGroup parent) {
         // Obtenemos el inflater (xml) actual
         LayoutInflater inflater = context.getLayoutInflater();

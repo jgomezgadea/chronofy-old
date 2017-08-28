@@ -2,39 +2,48 @@
 <!--Apariencia de los bricks en el mainFragment-->
 <!-- TODO rehacer la apariencia a la que yo quiero-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
     <ImageView
-        android:id="@+id/ImagenArea1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imagenListView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_vertical"
-        android:src="@android:drawable/star_big_on"/>
+        android:layout_marginRight="16dp"
+        android:src="@android:drawable/star_big_on" />
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/titulo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:width="210sp"
-            android:maxWidth="210sp"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/descripcion"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="12sp"
+            android:textColor="#b2000000"
+            android:textSize="16sp"
             android:textStyle="normal" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Button" />
 
 </LinearLayout>
