@@ -41,16 +41,16 @@ public class mainFragment extends Fragment {
         // Inflate the layout for this fragment
         final View res = inflater.inflate(R.layout.fragment_main, container, false);
 
-        // Ponemos el ListView principal en una variable
+        // Enlazamos los elementos del xml a variables
         mainListView = res.findViewById(R.id.mainListView);
+        fab = res.findViewById(R.id.fab);
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero
-        final ArrayAdapter aa = new ArrayAdapter<>(res.getContext(), android.R.layout.simple_list_item_1, listaEjemplo);
-        mainListView.setAdapter(aa);
+        final ArrayAdapter mainAdapter = new ArrayAdapter<>(res.getContext(), android.R.layout.simple_list_item_1, listaEjemplo);
+        mainListView.setAdapter(mainAdapter);
 
         // TODO Este botón agregará un elemento a la ListView de tipo Brick
-        fab = res.findViewById(R.id.fab);
         // Añadimos un listener a dicho botón
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class mainFragment extends Fragment {
                 // Añadimos el elemento
                 // TODO Esto en un futuro se hará desde otra ventana donde elegiremos el tipo
                 listaEjemplo.add("Juanito");
-                aa.notifyDataSetChanged();
+                mainAdapter.notifyDataSetChanged();
                 // Mostramos el toast
                 elementoAnyadido.show();
             }
