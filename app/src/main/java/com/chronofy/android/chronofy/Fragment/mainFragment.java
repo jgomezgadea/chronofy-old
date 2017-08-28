@@ -7,10 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.chronofy.android.chronofy.Adapter.inflateBrick;
 import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.R;
 
@@ -52,7 +52,7 @@ public class mainFragment extends Fragment {
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero
-        final ArrayAdapter mainAdapter = new ArrayAdapter<>(res.getContext(), android.R.layout.simple_list_item_1, listaEjemplo);
+        final inflateBrick mainAdapter = new inflateBrick(this.getActivity(), listaEjemplo);
         mainListView.setAdapter(mainAdapter);
 
         // TODO Este botón agregará un elemento a la ListView de tipo Brick
