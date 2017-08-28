@@ -5,9 +5,11 @@ package com.chronofy.android.chronofy.Model.brick;
  */
 
 public interface GenericBrick {
-    public String getNombre();
-    public void setNombre(String nom);
+    // TODO hacer documentación de las librerías
 
-    public int getPosicion();
-    public void setPosicion(int pos);
+    String getNombre();
+    void setNombre(String nom);
+
+    int getPosicion();
+    void setPosicion(int pos);
 }

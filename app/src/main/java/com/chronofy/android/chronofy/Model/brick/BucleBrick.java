@@ -7,24 +7,40 @@ package com.chronofy.android.chronofy.Model.brick;
 public class BucleBrick implements GenericBrick {
 
     private String nombre;
+    private int posicion;
+    private int numRep;
+
+    public BucleBrick(String nom, int pos, int nr) {
+        nombre = nom;
+        posicion = pos;
+        numRep = nr;
+    }
 
     @Override
     public String getNombre() {
-        return null;
+        return nombre;
     }
 
     @Override
     public void setNombre(String nom) {
-
+        nombre = nom;
     }
 
     @Override
     public int getPosicion() {
-        return 0;
+        return posicion;
     }
 
     @Override
     public void setPosicion(int pos) {
+        posicion = pos;
+    }
 
+    public int getNumRep() {
+        return numRep;
+    }
+
+    public void setNumRep(int nr) {
+        numRep = nr;
     }
 }
