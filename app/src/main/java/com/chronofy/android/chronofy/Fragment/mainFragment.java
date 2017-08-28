@@ -11,10 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,14 +29,19 @@ public class mainFragment extends Fragment {
     }
 
     // Creamos un ArrayList de ejemplo que en un futuro serán los bricks
-    String[] ejemplo = new String[] { "Android", "iPhone", "WindowsMobile",
-            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-            "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X" };
-    ArrayList<String> listaEjemplo = new ArrayList<>(Arrays.asList(ejemplo));
+    ArrayList<Brick> listaEjemplo = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Añadimos los bricks iniciales a listaEjemplo
+        listaEjemplo.add(new Brick("Hola", 78587578));
+        listaEjemplo.add(new Brick("que", 4521));
+        listaEjemplo.add(new Brick("tal", 578587));
+        listaEjemplo.add(new Brick("estás", 45587521));
+        listaEjemplo.add(new Brick("loko", 8755));
+
 
         // Inflate the layout for this fragment
         final View res = inflater.inflate(R.layout.fragment_main, container, false);
@@ -58,7 +63,7 @@ public class mainFragment extends Fragment {
                 Toast elementoAnyadido = Toast.makeText(res.getContext(), R.string.elemento_anyadido, Toast.LENGTH_SHORT);
                 // Añadimos el elemento
                 // TODO Esto en un futuro se hará desde otra ventana donde elegiremos el tipo
-                listaEjemplo.add("Juanito");
+                listaEjemplo.add(new Brick("Juanito", 1354));
                 mainAdapter.notifyDataSetChanged();
                 // Mostramos el toast
                 elementoAnyadido.show();

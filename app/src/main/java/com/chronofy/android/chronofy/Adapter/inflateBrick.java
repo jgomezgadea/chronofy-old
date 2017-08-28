@@ -28,20 +28,23 @@ public class inflateBrick extends ArrayAdapter {
     */
     public inflateBrick(Activity context,Brick[] datos) {
         super(context, R.layout.inflate_brick,datos);
-        this.context=context;
-        this.datos=datos;
+        this.context = context;
+        this.datos = datos;
         // Auto-generated constructor stub
     }
 
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View item=inflater.inflate(R.layout.inflate_brick, null);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Obtenemos el inflater (xml) actual
+        LayoutInflater inflater = context.getLayoutInflater();
+        // Lo modificamos por el nuestro, y ponemos el View en la variable item
+        View item = inflater.inflate(R.layout.inflate_brick, null);
 
-        TextView title=(TextView) item.findViewById(R.id.titulo);
+        // En el TextView titulo del xml, ponemos el nombre
+        TextView title = (TextView) item.findViewById(R.id.titulo);
         title.setText(datos[position].getNombre());
 
-        TextView descrip=(TextView) item.findViewById(R.id.descripcion);
+        // Y en el TextView descripcion del xml, ponemos el tipo
+        TextView descrip = (TextView) item.findViewById(R.id.descripcion);
         descrip.setText(datos[position].getTipo() + "");
 
         return item;
