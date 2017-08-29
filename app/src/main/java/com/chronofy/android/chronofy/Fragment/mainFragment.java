@@ -60,7 +60,7 @@ public class mainFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast elementoAnyadido = Toast.makeText(res.getContext(), R.string.elemento_anyadido, Toast.LENGTH_SHORT);
+                Toast elementoAnyadido = Toast.makeText(res.getContext(), R.string.added_item, Toast.LENGTH_SHORT);
                 // Añadimos el elemento
                 // TODO Esto en un futuro se hará desde otra ventana donde elegiremos el tipo
                 listaEjemplo.add(new Brick("Juanito", 1354));

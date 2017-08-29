@@ -2,7 +2,9 @@
 <resources>
     <string name="app_name">Chronofy</string>
     <string name="action_settings">Herramientas</string>
-    <string name="elemento_anyadido">Elemento añadido</string>
+    <string name="added_item">Elemento añadido</string>
     <string name="navigation_drawer_close">Cerrar el cajón de navegación</string>
     <string name="navigation_drawer_open">Abrir el cajón de navegación</string>
+    <string name="image_of_the_actual_brick">Imagen del brick actual</string>
+    <string name="brick_options">Opciones del brick</string>
 </resources>
