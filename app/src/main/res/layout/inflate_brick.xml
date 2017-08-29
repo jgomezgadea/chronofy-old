@@ -1,74 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Apariencia de los bricks en el mainFragment-->
-<!-- TODO rehacer la apariencia a la que yo quiero-->
-<android.support.v7.widget.CardView
-    android:id="@+id/card_view_friend"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+<!-- TODO Aplicar fuente Roboto y efectos-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardUseCompatPadding="true">
+    android:minHeight="72dp">
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imagenBrick"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/image_of_the_actual_brick"
+        android:src="@android:drawable/ic_dialog_alert"/>
+
+    <LinearLayout
+        android:id="@+id/textview_container"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="72dp">
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toLeftOf="@+id/imagenOpcionesBrick"
+        android:layout_toRightOf="@+id/imagenBrick"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp">
 
-        <ImageView
-            android:id="@+id/imagenBrick"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/image_of_the_actual_brick"
-            android:src="@android:drawable/ic_dialog_alert"/>
-
-        <LinearLayout
-            android:id="@+id/textview_container"
+        <TextView
+            android:id="@+id/tituloBrick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignWithParentIfMissing="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/imagenOpcionesBrick"
-            android:layout_toRightOf="@+id/imagenBrick"
-            android:orientation="vertical"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp">
+            android:text="Tiempo de descanso"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tituloBrick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tiempo de descanso"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/descripcionBrick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10 min y 5 seg restantes"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imagenOpcionesBrick"
+        <TextView
+            android:id="@+id/descripcionBrick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/brick_options"
-            android:src="@android:drawable/ic_media_pause" />
+            android:text="10 min y 5 seg restantes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</android.support.v7.widget.CardView>
+    <ImageView
+        android:id="@+id/imagenOpcionesBrick"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/brick_options"
+        android:padding="16dp"
+        android:src="@drawable/ic_more_vert_black_24dp" />
+
+</RelativeLayout>

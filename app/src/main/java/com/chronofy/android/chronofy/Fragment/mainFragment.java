@@ -47,8 +47,8 @@ public class mainFragment extends Fragment {
         final View res = inflater.inflate(R.layout.fragment_main, container, false);
 
         // Enlazamos los elementos del xml a variables
-        mainListView = res.findViewById(R.id.mainListView);
-        fab = res.findViewById(R.id.fab);
+        mainListView = (ListView) res.findViewById(R.id.mainListView);
+        fab = (FloatingActionButton) res.findViewById(R.id.fab);
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero

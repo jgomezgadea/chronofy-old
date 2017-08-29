@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.R;
@@ -43,12 +45,24 @@ public class inflateBrick extends ArrayAdapter {
         View item = inflater.inflate(R.layout.inflate_brick, null);
 
         // En el TextView titulo del xml, ponemos el nombre
-        TextView title = (TextView) item.findViewById(R.id.titulo);
+        TextView title = (TextView) item.findViewById(R.id.tituloBrick);
         title.setText(datos.get(position).getNombre());
 
         // Y en el TextView descripcion del xml, ponemos el tipo
-        TextView descrip = (TextView) item.findViewById(R.id.descripcion);
+        TextView descrip = (TextView) item.findViewById(R.id.descripcionBrick);
         descrip.setText(datos.get(position).getTipo() + "");
+
+        // Botón de ajustes de cada brick
+        final ImageView opciones = (ImageView)item.findViewById(R.id.imagenOpcionesBrick);
+        opciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Programar botón de ajustes
+
+                Toast pulsado = Toast.makeText(context, "Botón de opciones pulsado", Toast.LENGTH_SHORT);
+                pulsado.show();
+            }
+        });
 
         return item;
     }
