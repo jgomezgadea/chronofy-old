@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.chronofy.android.chronofy.Adapter.inflateBrick;
+import com.chronofy.android.chronofy.Adapter.InflateBrick;
 import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.R;
 
@@ -19,12 +19,13 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class mainFragment extends Fragment {
+public class MainFragment extends Fragment {
 
     ListView mainListView = null; // Variable con la que referenciamos a la ListView principal
     FloatingActionButton fab = null; // Variable con la que referenciamos al botón de añadir bricks
+    View view = null;
 
-    public mainFragment() {
+    public MainFragment() {
         // Required empty public constructor
     }
 
@@ -44,15 +45,15 @@ public class mainFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        final View res = inflater.inflate(R.layout.fragment_main, container, false);
+        view = inflater.inflate(R.layout.fragment_main, container, false);
 
         // Enlazamos los elementos del xml a variables
-        mainListView = (ListView) res.findViewById(R.id.mainListView);
-        fab = (FloatingActionButton) res.findViewById(R.id.fab);
+        mainListView = view.findViewById(R.id.mainListView);
+        fab = view.findViewById(R.id.fab);
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero
-        final inflateBrick mainAdapter = new inflateBrick(this.getActivity(), listaEjemplo);
+        final InflateBrick mainAdapter = new InflateBrick(this.getActivity(), listaEjemplo);
         mainListView.setAdapter(mainAdapter);
 
         // TODO Este botón agregará un elemento a la ListView de tipo Brick
@@ -60,7 +61,7 @@ public class mainFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast elementoAnyadido = Toast.makeText(res.getContext(), R.string.added_item, Toast.LENGTH_SHORT);
+                Toast elementoAnyadido = Toast.makeText(view.getContext(), R.string.added_item, Toast.LENGTH_SHORT);
                 // Añadimos el elemento
                 // TODO Esto en un futuro se hará desde otra ventana donde elegiremos el tipo
                 listaEjemplo.add(new Brick("Juanito", 1354));
@@ -70,7 +71,7 @@ public class mainFragment extends Fragment {
             }
         });
 
-        return res;
+        return view;
     }
 
 }

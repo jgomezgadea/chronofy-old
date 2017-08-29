@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Apariencia de los bricks en el mainFragment-->
+<!--Apariencia de los bricks en el MainFragment-->
 <!-- TODO Aplicar fuente Roboto y efectos-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"

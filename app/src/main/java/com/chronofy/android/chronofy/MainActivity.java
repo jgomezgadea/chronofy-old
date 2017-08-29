@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.chronofy.android.chronofy.Fragment.mainFragment;
+import com.chronofy.android.chronofy.Fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Creamos un mainFragment, y lo ponemos sobre el content_main
-        Fragment f = new mainFragment();
+        // Creamos un MainFragment, y lo ponemos sobre el content_main
+        Fragment f = new MainFragment();
         fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.content_main, f).commit();
 
