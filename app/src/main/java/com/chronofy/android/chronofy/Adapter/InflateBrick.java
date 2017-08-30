@@ -1,6 +1,7 @@
 package com.chronofy.android.chronofy.Adapter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -59,6 +60,11 @@ public class InflateBrick extends ArrayAdapter {
         // Botón de ajustes de cada brick
         final ImageView opciones = view.findViewById(R.id.imagenOpcionesBrick);
         opciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+            }
             @Override
             public void onClick(View v) {
                 // TODO Programar botón de ajustes
