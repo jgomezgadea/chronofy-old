@@ -38,10 +38,10 @@ public class MainFragment extends Fragment {
 
         // Añadimos los bricks iniciales a listaEjemplo
         listaEjemplo.add(new Brick("Hola", 78587578));
-        listaEjemplo.add(new Brick("que", 4521));
-        listaEjemplo.add(new Brick("tal", 578587));
-        listaEjemplo.add(new Brick("estás", 45587521));
-        listaEjemplo.add(new Brick("loko", 8755));
+//        listaEjemplo.add(new Brick("que", 4521));
+//        listaEjemplo.add(new Brick("tal", 578587));
+//        listaEjemplo.add(new Brick("estás", 45587521));
+//        listaEjemplo.add(new Brick("loko", 8755));
 
 
         // Inflate the layout for this fragment

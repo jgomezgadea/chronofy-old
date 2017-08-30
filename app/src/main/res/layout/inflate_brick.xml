@@ -56,7 +56,7 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:contentDescription="@string/brick_options"
-        android:padding="11dp"
+        android:padding="12dp"
         android:src="@drawable/ic_more_vert_black_24dp" />
 
 </RelativeLayout>

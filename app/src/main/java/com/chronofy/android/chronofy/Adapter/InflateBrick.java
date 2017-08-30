@@ -63,7 +63,6 @@ public class InflateBrick extends ArrayAdapter {
             public void onClick(View v) {
                 // TODO Programar botón de ajustes
                 PopupMenu popupMenu = new PopupMenu(activity, view);
-
                 popupMenu.setOnDismissListener(new OnDismissListener());
                 popupMenu.setOnMenuItemClickListener(new OnMenuItemClickListener());
                 popupMenu.inflate(R.menu.brick);
