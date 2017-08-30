@@ -78,39 +78,42 @@ public class InflateBrick extends ArrayAdapter {
         return view;
     }
 
-}
+    private class OnDismissListener extends Activity implements PopupMenu.OnDismissListener {
 
-class OnDismissListener extends Activity implements PopupMenu.OnDismissListener {
-
-    @Override
-    public void onDismiss(PopupMenu menu) {
-        // TODO Auto-generated method stub
-        Toast.makeText(getApplicationContext(), "Popup Menu is dismissed",
-                Toast.LENGTH_SHORT).show();
-    }
-
-}
-
-class OnMenuItemClickListener extends Activity implements PopupMenu.OnMenuItemClickListener {
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        // TODO Auto-generated method stub
-        switch (item.getItemId()) {
-            case R.id.action_one:
-                Toast.makeText(getApplicationContext(), "Acción 1",
-                        Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_two:
-                Toast.makeText(getApplicationContext(), "Acción 2",
-                        Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_three:
-                Toast.makeText(getApplicationContext(), "Acción 3",
-                        Toast.LENGTH_SHORT).show();
-                return true;
-
+        @Override
+        public void onDismiss(PopupMenu menu) {
+            // TODO Auto-generated method stub
+            Toast.makeText(view.getContext(), "Popup Menu is dismissed",
+                    Toast.LENGTH_SHORT).show();
         }
-        return false;
+
     }
+
+    private class OnMenuItemClickListener extends Activity implements PopupMenu.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            // TODO Auto-generated method stub
+            switch (item.getItemId()) {
+                case R.id.action_one:
+                    Toast.makeText(view.getContext(), "Acción 1",
+                            Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.action_two:
+                    Toast.makeText(view.getContext(), "Acción 2",
+                            Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.action_three:
+                    Toast.makeText(view.getContext(), "Acción 3",
+                            Toast.LENGTH_SHORT).show();
+                    return true;
+
+            }
+            return false;
+        }
+    }
+
 }
+
+
+
