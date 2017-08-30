@@ -42,7 +42,7 @@ public class InflateBrick extends ArrayAdapter {
 
     // TODO Hacer que si deslizo un view hacia la izquierda, se elimine (con un toast para confirmar su eliminación)
     @NonNull
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         // Obtenemos el inflater (xml) actual
         LayoutInflater inflater = activity.getLayoutInflater();
         // Lo modificamos por el nuestro, y ponemos el View en la variable view
@@ -63,37 +63,28 @@ public class InflateBrick extends ArrayAdapter {
             public void onClick(View v) {
                 // TODO Programar botón de ajustes
                 PopupMenu popupMenu = new PopupMenu(activity, view);
+
                 popupMenu.setOnDismissListener(new OnDismissListener());
                 popupMenu.setOnMenuItemClickListener(new OnMenuItemClickListener());
                 popupMenu.inflate(R.menu.brick);
                 popupMenu.show();
-
-                Toast pulsado = Toast.makeText(activity, "Botón de opciones pulsado", Toast.LENGTH_SHORT);
-                pulsado.show();
             }
         });
-
-
-
         return view;
     }
 
     private class OnDismissListener extends Activity implements PopupMenu.OnDismissListener {
-
         @Override
         public void onDismiss(PopupMenu menu) {
-            // TODO Auto-generated method stub
-            Toast.makeText(view.getContext(), "Popup Menu is dismissed",
-                    Toast.LENGTH_SHORT).show();
-        }
+            // Si queremos que al cerrar el menú expandible pase algo, lo ponemos aquí
 
+        }
     }
 
     private class OnMenuItemClickListener extends Activity implements PopupMenu.OnMenuItemClickListener {
-
         @Override
         public boolean onMenuItemClick(MenuItem item) {
-            // TODO Auto-generated method stub
+            // TODO Acción de cada uno de los botones
             switch (item.getItemId()) {
                 case R.id.action_one:
                     Toast.makeText(view.getContext(), "Acción 1",
@@ -107,7 +98,6 @@ public class InflateBrick extends ArrayAdapter {
                     Toast.makeText(view.getContext(), "Acción 3",
                             Toast.LENGTH_SHORT).show();
                     return true;
-
             }
             return false;
         }
