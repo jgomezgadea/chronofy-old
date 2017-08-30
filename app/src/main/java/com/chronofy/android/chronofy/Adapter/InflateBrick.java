@@ -84,8 +84,34 @@ public class InflateBrick extends ArrayAdapter {
         return view;
     }
 
-    private class OnDismissListener extends Activity implements PopupMenu.OnDismissListener {
+    private class CrearPopupMenu extends Activity implements View.OnClickListener {
+        private PopupMenu popupMenu;
 
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+        }
+
+        @Override
+        public void onClick(View anchor) {
+            // TODO Auto-generated method stub
+            popupMenu = new PopupMenu(MainActivity.this, anchor);
+            popupMenu.setOnDismissListener(new OnDismissListener());
+            popupMenu.setOnMenuItemClickListener(new OnMenuItemClickListener());
+            popupMenu.inflate(R.menu.popup_menu);
+            popupMenu.show();
+        }
+    }
+
+    private class OnDismissListener extends Activity implements PopupMenu.OnDismissListener {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.fragment_main);
+            Toast.makeText(view.getContext(), "Qut atl",
+                    Toast.LENGTH_SHORT).show();
+        }
         @Override
         public void onDismiss(PopupMenu menu) {
             // TODO Auto-generated method stub
