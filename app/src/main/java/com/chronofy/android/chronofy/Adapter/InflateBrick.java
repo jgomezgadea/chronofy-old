@@ -12,6 +12,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chronofy.android.chronofy.Fragment.MainFragment;
 import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.R;
 
@@ -56,52 +57,39 @@ public class InflateBrick extends ArrayAdapter {
         TextView descrip = (TextView) view.findViewById(R.id.descripcionBrick);
         descrip.setText(datos.get(position).getTipo() + "");
 
-        // Botón de ajustes de cada brick
+        // Botón de ajustes del brick
         final ImageView opciones = view.findViewById(R.id.imagenOpcionesBrick);
         opciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Programar botón de ajustes
                 PopupMenu popupMenu = new PopupMenu(getContext(), v);
-                popupMenu.setOnDismissListener(new OnDismissListener());
-                popupMenu.setOnMenuItemClickListener(new OnMenuItemClickListener());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        // TODO Acción de cada uno de los botones
+                        switch (item.getItemId()) {
+                            case R.id.reiniciarBrick:
+                                Toast.makeText(view.getContext(), "Reiniciar",
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                            case R.id.editarBrick:
+                                Toast.makeText(view.getContext(), "Editar",
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                            case R.id.eliminarBrick:
+                                MainFragment.eliminarBrick();
+                                Toast.makeText(view.getContext(), "Elemento eliminado",
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                        }
+                        return false;
+                    }
+                });
                 popupMenu.inflate(R.menu.brick);
                 popupMenu.show();
-                Toast.makeText(view.getContext(), opciones.getId()+"",
-                        Toast.LENGTH_SHORT).show();
             }
         });
         return view;
-    }
-
-    private class OnDismissListener extends Activity implements PopupMenu.OnDismissListener {
-        @Override
-        public void onDismiss(PopupMenu menu) {
-            // Si queremos que al cerrar el menú expandible pase algo, lo ponemos aquí
-
-        }
-    }
-
-    private class OnMenuItemClickListener extends Activity implements PopupMenu.OnMenuItemClickListener {
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            // TODO Acción de cada uno de los botones
-            switch (item.getItemId()) {
-                case R.id.action_one:
-                    Toast.makeText(view.getContext(), "Acción 1",
-                            Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.action_two:
-                    Toast.makeText(view.getContext(), "Acción 2",
-                            Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.action_three:
-                    Toast.makeText(view.getContext(), "Acción 3",
-                            Toast.LENGTH_SHORT).show();
-                    return true;
-            }
-            return false;
-        }
     }
 
 }

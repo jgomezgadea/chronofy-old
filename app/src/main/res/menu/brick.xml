@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_one"
-        android:title="Accion1"/>
+        android:id="@+id/reiniciarBrick"
+        android:title="Reiniciar" />
 
     <item
-        android:id="@+id/action_two"
-        android:title="Accion2"/>
+        android:id="@+id/editarBrick"
+        android:title="Editar" />
 
     <item
-        android:id="@+id/action_three"
-        android:title="Accion3"/>
+        android:id="@+id/eliminarBrick"
+        android:title="Eliminar" />
 
 </menu>

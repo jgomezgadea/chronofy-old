@@ -24,13 +24,14 @@ public class MainFragment extends Fragment {
     ListView mainListView = null; // Variable con la que referenciamos a la ListView principal
     FloatingActionButton fab = null; // Variable con la que referenciamos al botón de añadir bricks
     View view = null;
+    static InflateBrick mainAdapter;
 
     public MainFragment() {
         // Required empty public constructor
     }
 
     // Creamos un ArrayList de ejemplo que en un futuro serán los bricks
-    ArrayList<Brick> listaEjemplo = new ArrayList<>();
+    static ArrayList<Brick> listaEjemplo = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,7 +54,7 @@ public class MainFragment extends Fragment {
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero
-        final InflateBrick mainAdapter = new InflateBrick(this.getActivity(), listaEjemplo);
+        mainAdapter = new InflateBrick(this.getActivity(), listaEjemplo);
         mainListView.setAdapter(mainAdapter);
 
         // TODO Este botón agregará un elemento a la ListView de tipo Brick
@@ -72,6 +73,11 @@ public class MainFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public static void eliminarBrick() {
+        listaEjemplo.clear();
+        mainAdapter.notifyDataSetChanged();
     }
 
 }
