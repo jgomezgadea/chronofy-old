@@ -30,7 +30,6 @@ public class InflateBrick extends ArrayAdapter {
     private Activity activityFragment;
     private ArrayList<Brick> datos;
     private View view;
-    private int i = 0;
 
     /* Constructor de la clase, donde pasamos por parámetro los datos
      * a mostrar en la lista y el contexto
@@ -63,8 +62,7 @@ public class InflateBrick extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Programar botón de ajustes
-                opciones.setId(i++);
-                PopupMenu popupMenu = new PopupMenu(getContext(), view.findViewById(opciones.getId()));
+                PopupMenu popupMenu = new PopupMenu(getContext(), v);
                 popupMenu.setOnDismissListener(new OnDismissListener());
                 popupMenu.setOnMenuItemClickListener(new OnMenuItemClickListener());
                 popupMenu.inflate(R.menu.brick);
