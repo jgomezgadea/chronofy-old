@@ -1,7 +1,6 @@
 package com.chronofy.android.chronofy.Adapter;
 
 import android.app.Activity;
-import android.app.Application;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,16 +27,17 @@ public class InflateBrick extends ArrayAdapter {
     /* Creamos las variables necesarias para capturar el contexto
     *  y los datos que se publicarán en la lista
     */
-    private Activity activity;
+    private Activity activityFragment;
     private ArrayList<Brick> datos;
     private View view;
+    private int i = 0;
 
     /* Constructor de la clase, donde pasamos por parámetro los datos
      * a mostrar en la lista y el contexto
     */
     public InflateBrick(Activity activity, ArrayList<Brick> datos) {
         super(activity, R.layout.inflate_brick,datos);
-        this.activity = activity;
+        this.activityFragment = activity;
         this.datos = datos;
     }
 
@@ -45,7 +45,7 @@ public class InflateBrick extends ArrayAdapter {
     @NonNull
     public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         // Obtenemos el inflater (xml) actual
-        LayoutInflater inflater = activity.getLayoutInflater();
+        LayoutInflater inflater = activityFragment.getLayoutInflater();
         // Lo modificamos por el nuestro, y ponemos el View en la variable view
         view = inflater.inflate(R.layout.inflate_brick, null);
 
@@ -63,11 +63,14 @@ public class InflateBrick extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Programar botón de ajustes
-                PopupMenu popupMenu = new PopupMenu(activity, view);
+                opciones.setId(i++);
+                PopupMenu popupMenu = new PopupMenu(getContext(), view.findViewById(opciones.getId()));
                 popupMenu.setOnDismissListener(new OnDismissListener());
                 popupMenu.setOnMenuItemClickListener(new OnMenuItemClickListener());
                 popupMenu.inflate(R.menu.brick);
                 popupMenu.show();
+                Toast.makeText(view.getContext(), opciones.getId()+"",
+                        Toast.LENGTH_SHORT).show();
             }
         });
         return view;
@@ -81,16 +84,6 @@ public class InflateBrick extends ArrayAdapter {
         }
     }
 
-    <style name="toolBarStyle" parent="AppTheme">
-        <item name="popupTheme">@style/toolbarPopup</item>
-    </style>
-
-    <style name="toolbarPopup" parent="@android:style/Widget.Holo.ListPopupWindow">  <!--ThemeOverlay.AppCompat.Light-->
-        <item name="android:popupBackground">#AF0000</item>
-        <item name="overlapAnchor">false</item>
-        <item name="android:dropDownVerticalOffset">5dp</item>
-
-    </style>
     private class OnMenuItemClickListener extends Activity implements PopupMenu.OnMenuItemClickListener {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
