@@ -1,6 +1,7 @@
 package com.chronofy.android.chronofy.Adapter;
 
 import android.app.Activity;
+import android.app.Application;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -80,6 +81,16 @@ public class InflateBrick extends ArrayAdapter {
         }
     }
 
+    <style name="toolBarStyle" parent="AppTheme">
+        <item name="popupTheme">@style/toolbarPopup</item>
+    </style>
+
+    <style name="toolbarPopup" parent="@android:style/Widget.Holo.ListPopupWindow">  <!--ThemeOverlay.AppCompat.Light-->
+        <item name="android:popupBackground">#AF0000</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">5dp</item>
+
+    </style>
     private class OnMenuItemClickListener extends Activity implements PopupMenu.OnMenuItemClickListener {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
