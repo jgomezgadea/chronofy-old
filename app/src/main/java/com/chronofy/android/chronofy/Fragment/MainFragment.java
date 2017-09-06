@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,10 +40,10 @@ public class MainFragment extends Fragment {
 
         // Añadimos los bricks iniciales a listaEjemplo
         listaEjemplo.add(new Brick("Hola", 78587578));
-//        listaEjemplo.add(new Brick("que", 4521));
-//        listaEjemplo.add(new Brick("tal", 578587));
-//        listaEjemplo.add(new Brick("estás", 45587521));
-//        listaEjemplo.add(new Brick("loko", 8755));
+        listaEjemplo.add(new Brick("que", 4521));
+        listaEjemplo.add(new Brick("tal", 578587));
+        listaEjemplo.add(new Brick("estás", 45587521));
+        listaEjemplo.add(new Brick("loko", 8755));
 
 
         // Inflate the layout for this fragment
@@ -75,8 +76,8 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    public static void eliminarBrick() {
-        listaEjemplo.clear();
+    public static void eliminarBrick(int pos) {
+        listaEjemplo.remove(pos);
         mainAdapter.notifyDataSetChanged();
     }
 

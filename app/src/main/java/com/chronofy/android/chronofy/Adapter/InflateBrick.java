@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,9 +78,8 @@ public class InflateBrick extends ArrayAdapter {
                                         Toast.LENGTH_SHORT).show();
                                 return true;
                             case R.id.eliminarBrick:
-                                mirar https://stackoverflow.com/questions/7073577/how-to-get-object-from-listview-in-setonitemclicklistener-in-android
-                                MainFragment.eliminarBrick();
-                                Toast.makeText(view.getContext(), "Elemento eliminado",
+                                MainFragment.eliminarBrick(position);
+                                Toast.makeText(view.getContext(), "Elemento " + position + " eliminado",
                                         Toast.LENGTH_SHORT).show();
                                 return true;
                         }
