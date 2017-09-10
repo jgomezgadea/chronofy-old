@@ -66,7 +66,7 @@ public class InflateBrick extends ArrayAdapter {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        // TODO Acción de cada uno de los botones
+                        // TODO Acción de cada uno de los botones.
                         switch (item.getItemId()) {
                             case R.id.reiniciarBrick:
                                 Toast.makeText(view.getContext(), "Reiniciar",
