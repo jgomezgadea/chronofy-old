@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +41,7 @@ public class InflateBrick extends ArrayAdapter {
         this.datos = datos;
     }
 
-    // TODO Hacer que si deslizo un view hacia la izquierda, se elimine (con un toast para confirmar su eliminación)
+    // TODO Hacer que si deslizo un view hacia la izquierda, se elimine (con un toast para confirmar su eliminación).
     @NonNull
     public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         // Obtenemos el inflater (xml) actual
