@@ -7,12 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.chronofy.android.chronofy.Adapter.InflateBrick;
 import com.chronofy.android.chronofy.Model.Brick;
+import com.chronofy.android.chronofy.Model.DynamicListView;
 import com.chronofy.android.chronofy.R;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class MainFragment extends Fragment {
 
-    ListView mainListView = null; // Variable con la que referenciamos a la ListView principal
+    DynamicListView listView = null; // Variable con la que referenciamos a la ListView principal
     FloatingActionButton fab = null; // Variable con la que referenciamos al botón de añadir bricks
     View view = null;
     static InflateBrick mainAdapter;
@@ -50,13 +50,14 @@ public class MainFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
         // Enlazamos los elementos del xml a variables
-        mainListView = view.findViewById(R.id.mainListView);
+        listView = view.findViewById(R.id.mainListView);
         fab = view.findViewById(R.id.fab);
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero
         mainAdapter = new InflateBrick(this.getActivity(), listaEjemplo);
-        mainListView.setAdapter(mainAdapter);
+        listView.setAdapter(mainAdapter);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         // TODO Este botón agregará un elemento a la ListView de tipo Brick
         // Añadimos un listener a dicho botón
