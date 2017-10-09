@@ -1,33 +1,30 @@
-package com.chronofy.android.chronofy.Fragment;
+package com.chronofy.android.chronofy;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.chronofy.android.chronofy.Adapter.InflateBrick;
+import com.chronofy.android.chronofy.Adapter.BrickAdapter;
 import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.Model.DynamicListView;
-import com.chronofy.android.chronofy.R;
 
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
+ * El controlador de la lista de bricks (que utiliza la view del activity_list_view
  */
-public class MainFragment extends Fragment {
+public class BrickList extends Activity {
 
     DynamicListView listView = null; // Variable con la que referenciamos a la ListView principal
     FloatingActionButton fab = null; // Variable con la que referenciamos al botón de añadir bricks
     View view = null;
-    static InflateBrick mainAdapter;
+    static BrickAdapter mainAdapter;
 
-    public MainFragment() {
+    public BrickList() {
         // Required empty public constructor
     }
 
@@ -35,8 +32,9 @@ public class MainFragment extends Fragment {
     static ArrayList<Brick> listaEjemplo = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_view);
 
         // Añadimos los bricks iniciales a listaEjemplo
         listaEjemplo.add(new Brick("Hola", 78587578));
@@ -45,17 +43,14 @@ public class MainFragment extends Fragment {
         listaEjemplo.add(new Brick("estás", 45587521));
         listaEjemplo.add(new Brick("loko", 8755));
 
-
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_main, container, false);
-
         // Enlazamos los elementos del xml a variables
         listView = view.findViewById(R.id.mainListView);
         fab = view.findViewById(R.id.fab);
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero
-        mainAdapter = new InflateBrick(this.getActivity(), listaEjemplo);
+        mainAdapter = new BrickAdapter(this, listaEjemplo);
+        listView.setDataList(listaEjemplo);
         listView.setAdapter(mainAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
@@ -73,8 +68,6 @@ public class MainFragment extends Fragment {
                 elementoAnyadido.show();
             }
         });
-
-        return view;
     }
 
     public static void eliminarBrick(int pos) {

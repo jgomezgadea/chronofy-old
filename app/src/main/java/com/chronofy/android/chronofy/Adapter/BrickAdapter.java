@@ -12,7 +12,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chronofy.android.chronofy.Fragment.MainFragment;
+import com.chronofy.android.chronofy.BrickList;
 import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.R;
 
@@ -23,8 +23,8 @@ import java.util.HashMap;
  * Se encarga de adaptar el DynamicListView para que sea compatible con la apariencia de los bricks.
  */
 
-// TODO Adaptador de la mainListView para enlazarle la vista inflate_brick.xml
-public class InflateBrick extends ArrayAdapter<Brick> {
+// TODO Adaptador de la mainListView para enlazarle la vista brick_viewl
+public class BrickAdapter extends ArrayAdapter<Brick> {
 
     /* Creamos las variables necesarias para capturar el contexto
     *  y los datos que se publicarán en la lista
@@ -37,8 +37,8 @@ public class InflateBrick extends ArrayAdapter<Brick> {
     /* Constructor de la clase, donde pasamos por parámetro los datos
      * a mostrar en la lista y el contexto
     */
-    public InflateBrick(Activity activity, ArrayList<Brick> datos) {
-        super(activity, R.layout.inflate_brick,datos);
+    public BrickAdapter(Activity activity, ArrayList<Brick> datos) {
+        super(activity, R.layout.brick_view,datos);
         this.activityFragment = activity;
         for (int i = 0; i < datos.size(); ++i) {
             this.datos.put(datos.get(i), i);
@@ -51,7 +51,7 @@ public class InflateBrick extends ArrayAdapter<Brick> {
         // Obtenemos el inflater (xml) actual
         LayoutInflater inflater = activityFragment.getLayoutInflater();
         // Lo modificamos por el nuestro, y ponemos el View en la variable view
-        view = inflater.inflate(R.layout.inflate_brick, null);
+        view = inflater.inflate(R.layout.brick_view, null);
 
         // En el TextView titulo del xml, ponemos el nombre
         TextView title = (TextView) view.findViewById(R.id.tituloBrick);
@@ -82,7 +82,7 @@ public class InflateBrick extends ArrayAdapter<Brick> {
                                         Toast.LENGTH_SHORT).show();
                                 return true;
                             case R.id.eliminarBrick:
-                                MainFragment.eliminarBrick(position);
+                                BrickList.eliminarBrick(position);
                                 Toast.makeText(view.getContext(), "Elemento " + position + " eliminado",
                                         Toast.LENGTH_SHORT).show();
                                 return true;

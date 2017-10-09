@@ -38,7 +38,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.chronofy.android.chronofy.Adapter.InflateBrick;
+import com.chronofy.android.chronofy.Adapter.BrickAdapter;
 
 import java.util.ArrayList;
 
@@ -69,7 +69,7 @@ public class DynamicListView extends ListView {
     private final int MOVE_DURATION = 150;
     private final int LINE_THICKNESS = 15;
 
-    public ArrayList<String> mCheeseList;
+    public ArrayList<Brick> dataList;
 
     private int mLastEventY = -1;
 
@@ -202,7 +202,7 @@ public class DynamicListView extends ListView {
      */
     private void updateNeighborViewsForID(long itemID) {
         int position = getPositionForID(itemID);
-        InflateBrick adapter = ((InflateBrick)getAdapter());
+        BrickAdapter adapter = ((BrickAdapter)getAdapter());
         mAboveItemId = adapter.getItemId(position - 1);
         mBelowItemId = adapter.getItemId(position + 1);
     }
@@ -210,7 +210,7 @@ public class DynamicListView extends ListView {
     /** Retrieves the view in the list corresponding to itemID */
     public View getViewForID (long itemID) {
         int firstVisiblePosition = getFirstVisiblePosition();
-        InflateBrick adapter = ((InflateBrick)getAdapter());
+        BrickAdapter adapter = ((BrickAdapter)getAdapter());
         for(int i = 0; i < getChildCount(); i++) {
             View v = getChildAt(i);
             int position = firstVisiblePosition + i;
@@ -334,7 +334,7 @@ public class DynamicListView extends ListView {
                 return;
             }
 
-            swapElements(mCheeseList, originalItem, getPositionForView(switchView));
+            swapElements(dataList, originalItem, getPositionForView(switchView));
 
             ((BaseAdapter) getAdapter()).notifyDataSetChanged();
 
@@ -502,8 +502,8 @@ public class DynamicListView extends ListView {
         return false;
     }
 
-    public void setCheeseList(ArrayList<String> cheeseList) {
-        mCheeseList = cheeseList;
+    public void setDataList(ArrayList<Brick> dataList) {
+        this.dataList = dataList;
     }
 
     /**
