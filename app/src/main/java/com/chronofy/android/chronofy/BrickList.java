@@ -21,8 +21,7 @@ public class BrickList extends Activity {
 
     DynamicListView listView = null; // Variable con la que referenciamos a la ListView principal
     FloatingActionButton fab = null; // Variable con la que referenciamos al botón de añadir bricks
-    View view = null;
-    static BrickAdapter mainAdapter;
+    BrickAdapter adapter;
 
     public BrickList() {
         // Required empty public constructor
@@ -44,14 +43,14 @@ public class BrickList extends Activity {
         listaEjemplo.add(new Brick("loko", 8755));
 
         // Enlazamos los elementos del xml a variables
-        listView = view.findViewById(R.id.mainListView);
-        fab = view.findViewById(R.id.fab);
+        listView = findViewById(R.id.mainListView);
+        fab = findViewById(R.id.fab);
 
         // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
         // TODO Tengo que hacer un adaptador del tipo que yo quiero
-        mainAdapter = new BrickAdapter(this, listaEjemplo);
+        adapter = new BrickAdapter(this, listaEjemplo);
         listView.setDataList(listaEjemplo);
-        listView.setAdapter(mainAdapter);
+        listView.setAdapter(adapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         // TODO Este botón agregará un elemento a la ListView de tipo Brick
@@ -63,16 +62,16 @@ public class BrickList extends Activity {
                 // Añadimos el elemento
                 // TODO Esto en un futuro se hará desde otra ventana donde elegiremos el tipo
                 listaEjemplo.add(new Brick("Juanito", 1354));
-                mainAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
                 // Mostramos el toast
                 elementoAnyadido.show();
             }
         });
     }
 
-    public static void eliminarBrick(int pos) {
+    public void eliminarBrick(int pos) {
         listaEjemplo.remove(pos);
-        mainAdapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
 }

@@ -1,6 +1,5 @@
 package com.chronofy.android.chronofy.Adapter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -29,7 +28,7 @@ public class BrickAdapter extends ArrayAdapter<Brick> {
     /* Creamos las variables necesarias para capturar el contexto
     *  y los datos que se publicarán en la lista
     */
-    private Activity activityFragment;
+    private BrickList activity;
     private HashMap<Brick, Integer> datos = new HashMap<>();
     private View view;
     private final int INVALID_ID = -1;
@@ -37,9 +36,9 @@ public class BrickAdapter extends ArrayAdapter<Brick> {
     /* Constructor de la clase, donde pasamos por parámetro los datos
      * a mostrar en la lista y el contexto
     */
-    public BrickAdapter(Activity activity, ArrayList<Brick> datos) {
+    public BrickAdapter(BrickList activity, ArrayList<Brick> datos) {
         super(activity, R.layout.brick_view,datos);
-        this.activityFragment = activity;
+        this.activity = activity;
         for (int i = 0; i < datos.size(); ++i) {
             this.datos.put(datos.get(i), i);
         }
@@ -49,7 +48,7 @@ public class BrickAdapter extends ArrayAdapter<Brick> {
     @NonNull
     public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         // Obtenemos el inflater (xml) actual
-        LayoutInflater inflater = activityFragment.getLayoutInflater();
+        LayoutInflater inflater = activity.getLayoutInflater();
         // Lo modificamos por el nuestro, y ponemos el View en la variable view
         view = inflater.inflate(R.layout.brick_view, null);
 
@@ -82,7 +81,7 @@ public class BrickAdapter extends ArrayAdapter<Brick> {
                                         Toast.LENGTH_SHORT).show();
                                 return true;
                             case R.id.eliminarBrick:
-                                BrickList.eliminarBrick(position);
+                                activity.eliminarBrick(position);
                                 Toast.makeText(view.getContext(), "Elemento " + position + " eliminado",
                                         Toast.LENGTH_SHORT).show();
                                 return true;
