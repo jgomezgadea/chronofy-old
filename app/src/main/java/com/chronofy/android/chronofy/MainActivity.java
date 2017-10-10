@@ -1,9 +1,11 @@
 package com.chronofy.android.chronofy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,9 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-        FragmentManager fm = null;
-        // TODO Hacer base de datos con Realm
+    implements NavigationView.OnNavigationItemSelectedListener {
+    FragmentManager fm = null;
+    LoaderManager lm = null;
+    // TODO Hacer base de datos con Realm
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        // Creamos un BrickList como fragment, y lo ponemos sobre el activity_list_view
+        /*FragmentActivity f = new BrickList();
+        fm = getSupportFragmentManager();
+        lm = getSupportLoaderManager();
+        f.getSupportFragmentManager().beginTransaction().replace(R.id.content_main, ).commit();
+        fm.beginTransaction().replace(R.id.content_main, f).commit();*/
+        Intent i = new Intent(this, BrickList.class);
+        startActivity(i);
+
     }
 
     @Override

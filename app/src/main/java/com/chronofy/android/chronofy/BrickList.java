@@ -1,9 +1,8 @@
 package com.chronofy.android.chronofy;
 
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 /**
  * El controlador de la lista de bricks (que utiliza la view del activity_list_view
  */
-public class BrickList extends Activity {
+public class BrickList extends FragmentActivity {
 
     DynamicListView listView = null; // Variable con la que referenciamos a la ListView principal
     FloatingActionButton fab = null; // Variable con la que referenciamos al botón de añadir bricks
