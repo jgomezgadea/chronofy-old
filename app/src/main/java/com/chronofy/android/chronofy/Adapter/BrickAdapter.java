@@ -11,7 +11,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chronofy.android.chronofy.BrickList;
+import com.chronofy.android.chronofy.MainActivity;
 import com.chronofy.android.chronofy.Model.Brick;
 import com.chronofy.android.chronofy.R;
 
@@ -28,7 +28,7 @@ public class BrickAdapter extends ArrayAdapter<Brick> {
     /* Creamos las variables necesarias para capturar el contexto
     *  y los datos que se publicarán en la lista
     */
-    private BrickList activity;
+    private MainActivity activity;
     private HashMap<Brick, Integer> datos = new HashMap<>();
     private View view;
     private final int INVALID_ID = -1;
@@ -36,8 +36,8 @@ public class BrickAdapter extends ArrayAdapter<Brick> {
     /* Constructor de la clase, donde pasamos por parámetro los datos
      * a mostrar en la lista y el contexto
     */
-    public BrickAdapter(BrickList activity, ArrayList<Brick> datos) {
-        super(activity, R.layout.brick_view,datos);
+    public BrickAdapter(MainActivity activity, ArrayList<Brick> datos) {
+        super(activity.getApplicationContext(), R.layout.brick_view,datos);
         this.activity = activity;
         for (int i = 0; i < datos.size(); ++i) {
             this.datos.put(datos.get(i), i);

@@ -1,10 +1,10 @@
 package com.chronofy.android.chronofy;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.LoaderManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,12 +12,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.chronofy.android.chronofy.Adapter.BrickAdapter;
+import com.chronofy.android.chronofy.Model.Brick;
+import com.chronofy.android.chronofy.Model.DynamicListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
-    FragmentManager fm = null;
-    LoaderManager lm = null;
-    // TODO Hacer base de datos con Realm
+
+    DynamicListView listView = null; // Variable con la que referenciamos a la ListView principal
+    FloatingActionButton fab = null; // Variable con la que referenciamos al botón de añadir bricks
+    BrickAdapter listAdapter;
+
+    // TODO Hacer base de datos con Realm (esta lista se tendrá que guardar y recargar)
+    // ArrayList de ejemplo
+    ArrayList<Brick> listaEjemplo = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +49,38 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        CREAR clase que extienda de AsyncTask que contenga lo de BrickList y comprobar antes que funcione
-                sin hacerlo en paralelo.
-        crearBrickList().execute();
-        // Creamos un BrickList como fragment, y lo ponemos sobre el activity_list_view
-        /*FragmentActivity f = new BrickList();
-        fm = getSupportFragmentManager();
-        lm = getSupportLoaderManager();
-        f.getSupportFragmentManager().beginTransaction().replace(R.id.activity_list_view, ).commit();
-        fm.beginTransaction().replace(R.id.activity_list_view, f).commit();*/
-        //Intent i = new Intent(this, BrickList.class);
-        //startActivity(i);
+        /*
+         * Aquí empieza el código encargado del BrickListView
+         */
+
+        // Enlazamos los elementos del xml a variables
+        listView = (DynamicListView) findViewById(R.id.mainListView);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        // El ArrayAdapter es lo que define el formato de la ListView y el ArrayList del que lee
+        // TODO Tengo que hacer un adaptador del tipo que yo quiero
+        listAdapter = new BrickAdapter(this, listaEjemplo);
+        listView.setDataList(listaEjemplo);
+        listView.setAdapter(listAdapter);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        // TODO Este botón agregará un elemento a la ListView de tipo Brick
+        // Añadimos un listener a dicho botón
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast elementoAnyadido = Toast.makeText(view.getContext(), R.string.added_item, Toast.LENGTH_SHORT);
+                // Añadimos el elemento
+                // TODO Esto en un futuro se hará desde otra ventana donde elegiremos el tipo
+                listaEjemplo.add(new Brick("Juanito", 1354));
+                listAdapter.notifyDataSetChanged();
+                // Mostramos el toast
+                elementoAnyadido.show();
+            }
+        });
+
+        // Creamos la listView con los Bricks de forma paralela.
+        new BrickList().execute();
 
     }
 
@@ -105,5 +140,37 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /*
+     * Código de control de la BrickListView
+     */
+
+    // Ejecuta en paralelo la lista de bricks
+    class BrickList extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            // Añadimos los bricks iniciales a listaEjemplo
+            listaEjemplo.add(new Brick("Hola", 78587578));
+            listaEjemplo.add(new Brick("que", 4521));
+            listaEjemplo.add(new Brick("tal", 578587));
+            listaEjemplo.add(new Brick("estás", 45587521));
+            listaEjemplo.add(new Brick("loko", 8755));
+
+            listAdapter.notifyDataSetChanged();
+
+            return null;
+        }
+    }
+    public void eliminarBrick(final int pos) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                listaEjemplo.remove(pos);
+                listAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }

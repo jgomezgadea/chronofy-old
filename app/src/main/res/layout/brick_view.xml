@@ -4,6 +4,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/background_light"
     android:minHeight="72dp">
 
     <ImageView
@@ -15,7 +16,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/image_of_the_actual_brick"
-        android:src="@android:drawable/ic_dialog_alert"/>
+        android:src="@android:drawable/ic_dialog_alert" />
 
     <LinearLayout
         android:id="@+id/textview_container"
