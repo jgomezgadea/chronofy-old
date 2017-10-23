@@ -1,6 +1,5 @@
 package com.chronofy.android.chronofy;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -36,15 +35,17 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        CREAR clase que extienda de AsyncTask que contenga lo de BrickList y comprobar antes que funcione
+                sin hacerlo en paralelo.
+        crearBrickList().execute();
         // Creamos un BrickList como fragment, y lo ponemos sobre el activity_list_view
         /*FragmentActivity f = new BrickList();
         fm = getSupportFragmentManager();
         lm = getSupportLoaderManager();
-        f.getSupportFragmentManager().beginTransaction().replace(R.id.content_main, ).commit();
-        fm.beginTransaction().replace(R.id.content_main, f).commit();*/
-        Intent i = new Intent(this, BrickList.class);
-        startActivity(i);
+        f.getSupportFragmentManager().beginTransaction().replace(R.id.activity_list_view, ).commit();
+        fm.beginTransaction().replace(R.id.activity_list_view, f).commit();*/
+        //Intent i = new Intent(this, BrickList.class);
+        //startActivity(i);
 
     }
 

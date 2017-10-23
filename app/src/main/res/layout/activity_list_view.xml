@@ -1,17 +1,19 @@
-<!--Este fragment tiene la vista con el programa que este cargado en ese momento-->
+<!--A esto le aplicamos el fragment correspondiente (lo que se va a ver en pantalla)-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.chronofy.android.chronofy.BrickList">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.chronofy.android.chronofy.MainActivity"
+    tools:showIn="@layout/app_bar_main">
 
     <com.chronofy.android.chronofy.Model.DynamicListView
         android:id="@+id/mainListView"
-        android:background="#0000"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:background="#0000" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -20,5 +22,4 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
-
 </FrameLayout>
